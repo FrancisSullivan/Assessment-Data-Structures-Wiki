@@ -18,22 +18,36 @@ namespace Data_Structures_Wiki
         {
             InitializeComponent();
         }
+        
         static int rows = 12;
         static int columns = 4;
-        string[,] stringArray = new string[rows, columns];
+        string[,] stringArray = new string[columns, rows];
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
-            for (int y = 0; y < rows; y++)
+            for (int i = 0; i < rows; i++)
             {
-                if (stringArray[y, 0] == "~")
+                if (stringArray[0, i] == "~")
                 {
-                    stringArray[y, 0] = textBoxName.Text;
-                    stringArray[y, 1] = textBoxCategory.Text;
-                    stringArray[y, 2] = textBoxStructure.Text;
-                    stringArray[y, 3] = textBoxDescription.Text;
+                    stringArray[0, i] = textBoxName.Text;
+                    stringArray[1, i] = textBoxCategory.Text;
+                    stringArray[2, i] = textBoxStructure.Text;
+                    stringArray[3, i] = textBoxDescription.Text;
                 }
             }
         }
+        private void InitaliseArray()
+        {
+            for (int i = 0; i < rows; i++)
+            {
+                stringArray[0, i] = "~"; // Name
+                stringArray[1, i] = ""; //  Category
+            }
+            DisplayListView();
+        }
+        private void DisplayListView()
+        {
+           
+        }
+
     }
 }
