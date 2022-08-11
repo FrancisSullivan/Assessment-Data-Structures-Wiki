@@ -51,14 +51,21 @@ namespace Data_Structures_Wiki
             listView.Items.Clear();
             for (int i = 0; i < rows; i++)
             {
-                ListViewItem lvi = new ListViewItem(stringArray[0, i]);
-                lvi.SubItems.Add(stringArray[1, i]);
-                listView.Items.Add(lvi);
+                ListViewItem listViewItem = new ListViewItem(stringArray[0, i]);
+                listViewItem.SubItems.Add(stringArray[1, i]);
+                listView.Items.Add(listViewItem);
             }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             InitaliseArray();
+        }
+
+        private void listView_Click(object sender, EventArgs e)
+        {
+            int currentItem = listView.SelectedIndices[0];
+            textBoxName.Text = stringArray[0, currentItem];
+            textBoxCategory.Text = stringArray[1, currentItem];
         }
     }
 }
