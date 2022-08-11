@@ -31,8 +31,8 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -80,23 +80,25 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // button4
+            // buttonSave
             // 
-            this.button4.Location = new System.Drawing.Point(875, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(111, 49);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Save";
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(875, 10);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(111, 49);
+            this.buttonSave.TabIndex = 3;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // button5
+            // buttonLoad
             // 
-            this.button5.Location = new System.Drawing.Point(552, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(111, 49);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Load";
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonLoad.Location = new System.Drawing.Point(552, 10);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(111, 49);
+            this.buttonLoad.TabIndex = 4;
+            this.buttonLoad.Text = "Load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // listView
             // 
@@ -239,8 +241,8 @@
             this.Controls.Add(this.textBoxCategory);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.listView);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.buttonLoad);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
@@ -257,8 +259,8 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

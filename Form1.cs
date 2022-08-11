@@ -4,13 +4,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-// Francis Sullivan
+// Francis Sullivan.
 
 namespace Data_Structures_Wiki
 {
@@ -20,8 +21,65 @@ namespace Data_Structures_Wiki
         {
             InitializeComponent();
         }
+        // In-progress.
+        // 9.10	-- Create a SAVE button, data is written to a binary file called definitions.dat.
+        //         Data is sorted by Name, user has the option to select an alternate file.
+        //         Use a file stream and BinaryWriter to create the file.
+        #region
+        string defaultFileName = "default.bin";
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "bin file|*.bin";
+            saveFileDialog.Title = "Save A BIN file";
+            saveFileDialog.InitialDirectory = Application.StartupPath;
+            saveFileDialog.DefaultExt = "bin";
+            saveFileDialog.ShowDialog();
+            string fileName = saveFileDialog.FileName;
+            if (saveFileDialog.FileName != "")
+            {
+                Save(fileName);
+            }
+            else
+            {
+                Save(defaultFileName);
+            }
+        }
+        private void Save(string saveFileName)
+        {
+            try
+            {
+                using (Stream stream = File.Open(saveFileName, FileMode.Create))
+                {
+                    using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
+                    {
+                        for (int y = 0; y < row; y++)
+                        {
+                            for (int x = 0; x < column; x++)
+                            {
+                                writer.Write(stringArray[x, y]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        #endregion
+        // 9.11	-- Create a LOAD button that will read the information from a binary file called
+        //         definitions.dat into the 2D array, ensure the user has the option to select an alternative file.
+        //         Use a file stream and BinaryReader to complete this task.
+        #region
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
 
-        // 99%.
+        }
+        #endregion
+
+        // Mostly-done.
         // 9.1 -- Create a global 2D string array.
         #region
         static int row = 12;
@@ -120,24 +178,13 @@ namespace Data_Structures_Wiki
             textBoxDescription.Text = stringArray[3, currentItem];
         }
         #endregion
-        // In-progress.
-        
 
         // To-do.
-
         // 9.6	-- Write the code for a Bubble Sort method to sort the 2D array by Name ascending,
         //         ensure you use a separate swap method that passes the array element to be swapped
         //         (do not use any built-in array methods).
         // 9.7	-- Write the code for a Binary Search for the Name in the 2D array and display
         //         the information in the other textboxes when found, add suitable feedback if the
         //         search in not successful and clear the search textbox(do not use any built-in array methods).
-        // 9.10	-- Create a SAVE button so the information from the 2D array can be written into a binary file
-        //         called definitions.dat which is sorted by Name, ensure the user has the option to select
-        //         an alternative file. Use a file stream and BinaryWriter to create the file.
-        // 9.11	-- Create a LOAD button that will read the information from a binary file called
-        //         definitions.dat into the 2D array, ensure the user has the option to select an alternative file.
-        //         Use a file stream and BinaryReader to complete this task.
-
-
     }
 }
