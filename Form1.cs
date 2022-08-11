@@ -41,7 +41,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.2 -- Create an ADD button to store information from the four TextBoxes into array.
+        // 9.2 -- Create an ADD button to add info from the four TextBoxes into array.
         #region
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -60,7 +60,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.3	-- Create an EDIT button allowing the user to modify the array with info from the 4 text boxes.
+        // 9.3 -- Create an EDIT button to let the user modify the array with info from the four text boxes.
         #region
         private void buttonEdit_Click(object sender, EventArgs e)
         {
@@ -69,6 +69,19 @@ namespace Data_Structures_Wiki
             stringArray[1, currentItem] = textBoxCategory.Text;
             stringArray[2, currentItem] = textBoxStructure.Text;
             stringArray[3, currentItem] = textBoxDescription.Text;
+            ClearTextBoxes();
+            DisplayListView();
+        }
+        #endregion
+        // 9.4 -- Create a DELETE button to removes all information from an item in the array.
+        #region
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            int currentItem = listView.SelectedIndices[0];
+            stringArray[0, currentItem] = "~";
+            stringArray[1, currentItem] = "";
+            stringArray[2, currentItem] = "";
+            stringArray[3, currentItem] = "";
             ClearTextBoxes();
             DisplayListView();
         }
@@ -96,8 +109,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.9 -- Create a TextBoxDisplay method to diplay relevant information in appropriate TextBoxes,
-        //        when an item is selected in the ListView.
+        // 9.9 -- Create a TextBoxDisplay method to show information when an item is selected in the ListView.
         #region
         private void listView_Click(object sender, EventArgs e)
         {
@@ -108,13 +120,11 @@ namespace Data_Structures_Wiki
             textBoxDescription.Text = stringArray[3, currentItem];
         }
         #endregion
-
         // In-progress.
         
 
         // To-do.
-        // 9.4	-- Create a DELETE button that removes all the information from a single entry
-        //         of the array; the user must be prompted before the final deletion occurs.
+
         // 9.6	-- Write the code for a Bubble Sort method to sort the 2D array by Name ascending,
         //         ensure you use a separate swap method that passes the array element to be swapped
         //         (do not use any built-in array methods).
