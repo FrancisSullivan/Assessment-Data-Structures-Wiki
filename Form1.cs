@@ -109,7 +109,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.9 -- Create a TextBoxDisplay method to show information when an item is selected in the ListView.
+        // 9.9 -- Create a TextBoxDisplay method to show info when an item is selected in the ListView.
         #region
         private void listView_Click(object sender, EventArgs e)
         {
