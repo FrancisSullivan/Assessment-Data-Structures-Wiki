@@ -21,65 +21,6 @@ namespace Data_Structures_Wiki
         {
             InitializeComponent();
         }
-        // In-progress.
-        // 9.10	-- Create a SAVE button, data is written to a binary file called definitions.dat.
-        //         Data is sorted by Name, user has the option to select an alternate file.
-        //         Use a file stream and BinaryWriter to create the file.
-        #region
-        string defaultFileName = "default.bin";
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "bin file|*.bin";
-            saveFileDialog.Title = "Save A BIN file";
-            saveFileDialog.InitialDirectory = Application.StartupPath;
-            saveFileDialog.DefaultExt = "bin";
-            saveFileDialog.ShowDialog();
-            string fileName = saveFileDialog.FileName;
-            if (saveFileDialog.FileName != "")
-            {
-                Save(fileName);
-            }
-            else
-            {
-                Save(defaultFileName);
-            }
-        }
-        private void Save(string saveFileName)
-        {
-            try
-            {
-                using (Stream stream = File.Open(saveFileName, FileMode.Create))
-                {
-                    using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
-                    {
-                        for (int y = 0; y < row; y++)
-                        {
-                            for (int x = 0; x < column; x++)
-                            {
-                                writer.Write(stringArray[x, y]);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-        #endregion
-        // 9.11	-- Create a LOAD button that will read the information from a binary file called
-        //         definitions.dat into the 2D array, ensure the user has the option to select an alternative file.
-        //         Use a file stream and BinaryReader to complete this task.
-        #region
-        private void buttonLoad_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        // Mostly-done.
         // 9.1 -- Create a global 2D string array.
         #region
         static int row = 12;
@@ -154,6 +95,17 @@ namespace Data_Structures_Wiki
             textBoxDescription.Clear();
         }
         #endregion
+        // 9.9 -- Create a TextBoxDisplay method to show info when an item is selected in the ListView.
+        #region
+        private void listView_Click(object sender, EventArgs e)
+        {
+            int currentItem = listView.SelectedIndices[0];
+            textBoxName.Text = stringArray[0, currentItem];
+            textBoxCategory.Text = stringArray[1, currentItem];
+            textBoxStructure.Text = stringArray[2, currentItem];
+            textBoxDescription.Text = stringArray[3, currentItem];
+        }
+        #endregion
         // 9.8 -- Create a ListViewDisplay method to show 'Name' and 'Category' in a ListView.
         #region
         private void DisplayListView()
@@ -167,15 +119,97 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.9 -- Create a TextBoxDisplay method to show info when an item is selected in the ListView.
+
+        // In-progress.
+        // 9.10	-- Create a SAVE button, data is written to a binary file called definitions.dat.
+        //         Data is sorted by Name, user has the option to select an alternate file.
+        //         Use a file stream and BinaryWriter to create the file.
         #region
-        private void listView_Click(object sender, EventArgs e)
+        string defaultFileName = "default.bin";
+        private void buttonSave_Click(object sender, EventArgs e)
         {
-            int currentItem = listView.SelectedIndices[0];
-            textBoxName.Text = stringArray[0, currentItem];
-            textBoxCategory.Text = stringArray[1, currentItem];
-            textBoxStructure.Text = stringArray[2, currentItem];
-            textBoxDescription.Text = stringArray[3, currentItem];
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "bin file|*.bin";
+            saveFileDialog.Title = "Save A BIN file";
+            saveFileDialog.InitialDirectory = Application.StartupPath;
+            saveFileDialog.DefaultExt = "bin";
+            saveFileDialog.ShowDialog();
+            string fileName = saveFileDialog.FileName;
+            if (saveFileDialog.FileName != "")
+            {
+                Save(fileName);
+            }
+            else
+            {
+                Save(defaultFileName);
+            }
+        }
+        private void Save(string saveFileName)
+        {
+            try
+            {
+                using (Stream stream = File.Open(saveFileName, FileMode.Create))
+                {
+                    using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
+                    {
+                        for (int y = 0; y < row; y++)
+                        {
+                            for (int x = 0; x < column; x++)
+                            {
+                                writer.Write(stringArray[x, y]);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        #endregion
+        // 9.11	-- Create a LOAD button that will read the information from a binary file called
+        //         definitions.dat into the 2D array, ensure the user has the option to select an alternative file.
+        //         Use a file stream and BinaryReader to complete this task.
+        #region
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Application.StartupPath;
+            openFileDialog.Filter = "BIN FILES|*.bin";
+            openFileDialog.Title = "Open a BIN file";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Open(openFileDialog.FileName);
+            }
+        }
+        private void Open(string openFileName)
+        {
+            try
+            {
+                using (Stream stream = File.Open(openFileName, FileMode.Open))
+                {
+                    using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
+                    {
+                        {
+                            int x = 0;
+                            Array.Clear(stringArray, 0, stringArray.Length);
+                            while (stream.Position < stream.Length)
+                            {
+                                for (int y = 0; y < column; y++)
+                                {
+                                    stringArray[x, y] = reader.ReadString();
+                                }
+                                x++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
         #endregion
 
