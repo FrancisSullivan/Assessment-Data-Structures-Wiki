@@ -66,6 +66,8 @@ namespace Data_Structures_Wiki
             int currentItem = listView.SelectedIndices[0];
             textBoxName.Text = stringArray[0, currentItem];
             textBoxCategory.Text = stringArray[1, currentItem];
+            textBoxStructure.Text = stringArray[2, currentItem];
+            textBoxDescription.Text = stringArray[3, currentItem];
         }
     }
 }
