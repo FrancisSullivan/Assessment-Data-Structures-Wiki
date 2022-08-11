@@ -60,6 +60,19 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
+        // 9.3	-- Create an EDIT button allowing the user to modify the array with info from the 4 text boxes.
+        #region
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            int currentItem = listView.SelectedIndices[0];
+            stringArray[0, currentItem] = textBoxName.Text;
+            stringArray[1, currentItem] = textBoxCategory.Text;
+            stringArray[2, currentItem] = textBoxStructure.Text;
+            stringArray[3, currentItem] = textBoxDescription.Text;
+            ClearTextBoxes();
+            DisplayListView();
+        }
+        #endregion
         // 9.5 -- Create a CLEAR method to clear the four TextBoxes.
         #region
         private void ClearTextBoxes()
@@ -70,7 +83,7 @@ namespace Data_Structures_Wiki
             textBoxDescription.Clear();
         }
         #endregion
-        // 9.8 -- Create a DISPLAY method to show 'Name' and 'Category' in a ListView.
+        // 9.8 -- Create a ListViewDisplay method to show 'Name' and 'Category' in a ListView.
         #region
         private void DisplayListView()
         {
@@ -83,7 +96,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.9 -- Create a method to diplay relevant information in appropriate TextBoxes,
+        // 9.9 -- Create a TextBoxDisplay method to diplay relevant information in appropriate TextBoxes,
         //        when an item is selected in the ListView.
         #region
         private void listView_Click(object sender, EventArgs e)
@@ -97,15 +110,14 @@ namespace Data_Structures_Wiki
         #endregion
 
         // In-progress.
+        
 
         // To-do.
-        // 9.3	-- Create an EDIT button that will allow the user to modify any information
-        //         from the 4 text boxes into the 2D array.
         // 9.4	-- Create a DELETE button that removes all the information from a single entry
         //         of the array; the user must be prompted before the final deletion occurs.
         // 9.6	-- Write the code for a Bubble Sort method to sort the 2D array by Name ascending,
         //         ensure you use a separate swap method that passes the array element to be swapped
-        //         (do not use any built-in array methods),
+        //         (do not use any built-in array methods).
         // 9.7	-- Write the code for a Binary Search for the Name in the 2D array and display
         //         the information in the other textboxes when found, add suitable feedback if the
         //         search in not successful and clear the search textbox(do not use any built-in array methods).
@@ -115,7 +127,6 @@ namespace Data_Structures_Wiki
         // 9.11	-- Create a LOAD button that will read the information from a binary file called
         //         definitions.dat into the 2D array, ensure the user has the option to select an alternative file.
         //         Use a file stream and BinaryReader to complete this task.
-
 
 
     }
