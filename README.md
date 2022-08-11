@@ -1,5 +1,5 @@
 # Data Structures Wiki
-The purpose of this app is to store and access information with the aid of a Graphical User Interface (GUI).
+The purpose of this app is to store and access information.
 <img width="510" alt="Screen Shot 2022-08-06 at 9 23 13 pm" src="https://user-images.githubusercontent.com/99381522/183250887-e4d26899-f688-4bb1-b9bb-b5668bf1982b.png">
 
 The app utilises a two-dimensional array such as shown below to manage data.
