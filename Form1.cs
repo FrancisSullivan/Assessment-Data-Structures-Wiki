@@ -32,8 +32,10 @@ namespace Data_Structures_Wiki
                     stringArray[1, i] = textBoxCategory.Text;
                     stringArray[2, i] = textBoxStructure.Text;
                     stringArray[3, i] = textBoxDescription.Text;
+                    break;
                 }
             }
+            DisplayListView();
         }
         private void InitaliseArray()
         {
@@ -46,8 +48,17 @@ namespace Data_Structures_Wiki
         }
         private void DisplayListView()
         {
-           
+            listView.Items.Clear();
+            for (int i = 0; i < rows; i++)
+            {
+                ListViewItem lvi = new ListViewItem(stringArray[0, i]);
+                lvi.SubItems.Add(stringArray[1, i]);
+                listView.Items.Add(lvi);
+            }
         }
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            InitaliseArray();
+        }
     }
 }
