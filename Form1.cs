@@ -18,7 +18,6 @@ namespace Data_Structures_Wiki
         {
             InitializeComponent();
         }
-
         // 9.1 -- Create a global 2D string array.
         #region
         static int row = 12;
@@ -38,16 +37,8 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.5 -- Create a CLEAR method to clear the four text boxes.
+        // 9.2 -- Create an ADD button to store information from the 4 text boxes into array.
         #region
-        private void ClearTextBoxes()
-        {
-            textBoxName.Clear();
-            textBoxCategory.Clear();
-            textBoxStructure.Clear();
-            textBoxDescription.Clear();
-        }
-        #endregion
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < row; i++)
@@ -64,9 +55,19 @@ namespace Data_Structures_Wiki
             ClearTextBoxes();
             DisplayListView();
         }
-
-
-        
+        #endregion
+        // 9.5 -- Create a CLEAR method to clear the four text boxes.
+        #region
+        private void ClearTextBoxes()
+        {
+            textBoxName.Clear();
+            textBoxCategory.Clear();
+            textBoxStructure.Clear();
+            textBoxDescription.Clear();
+        }
+        #endregion
+        // 9.8 -- Create a DISPLAY method to show 'Name' and 'Category' in a ListView.
+        #region
         private void DisplayListView()
         {
             listView.Items.Clear();
@@ -77,8 +78,10 @@ namespace Data_Structures_Wiki
                 listView.Items.Add(listViewItem);
             }
         }
-        
-
+        #endregion
+        // 9.9 -- Create a method to diplay relevant information in appropriate TextBoxes,
+        //        when an item is selected in the ListView.
+        #region
         private void listView_Click(object sender, EventArgs e)
         {
             int currentItem = listView.SelectedIndices[0];
@@ -87,5 +90,7 @@ namespace Data_Structures_Wiki
             textBoxStructure.Text = stringArray[2, currentItem];
             textBoxDescription.Text = stringArray[3, currentItem];
         }
+        #endregion
+
     }
 }
