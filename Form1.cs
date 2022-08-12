@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 // Francis Sullivan.
-
 namespace Data_Structures_Wiki
 {
     public partial class Form1 : Form
@@ -21,8 +20,7 @@ namespace Data_Structures_Wiki
         {
             InitializeComponent();
         }
-
-        // Mostly-done.
+        // Program Criteria.
         // 9.01 -- Create a global 2D string array.
         #region
         static int row = 12;
@@ -44,7 +42,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.02 -- Create an ADD button to add info from the four TextBoxes into array.
+        // 9.02 -- Create an 'Add' button to add info from the four TextBoxes into array.
         #region
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -63,7 +61,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.03 -- Create an EDIT button to let the user modify the array with info from the four text boxes.
+        // 9.03 -- Create an 'Edit' button to let the user modify the array with info from the four text boxes.
         #region
         private void buttonEdit_Click(object sender, EventArgs e)
         {
@@ -76,7 +74,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.04 -- Create a DELETE button to removes all information from an item in the array.
+        // 9.04 -- Create a 'Delete' button to removes all information from an item in the array.
         #region
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -89,7 +87,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.05 -- Create a CLEAR method to clear the four TextBoxes.
+        // 9.05 -- Create a 'Clear' method to clear the four TextBoxes.
         #region
         private void ClearTextBoxes()
         {
@@ -99,7 +97,7 @@ namespace Data_Structures_Wiki
             textBoxDescription.Clear();
         }
         #endregion
-        // 9.09 -- Create a TextBoxDisplay method to show info when an item is selected in the ListView.
+        // 9.09 -- Create a 'TextBoxDisplay' method to show info when an item is selected in the ListView.
         #region
         private void listView_Click(object sender, EventArgs e)
         {
@@ -110,7 +108,7 @@ namespace Data_Structures_Wiki
             textBoxDescription.Text = stringArray[3, currentItem];
         }
         #endregion
-        // 9.08 -- Create a ListViewDisplay method to show 'Name' and 'Category' in a ListView.
+        // 9.08 -- Create a 'ListViewDisplay' method to show 'Name' and 'Category' in a ListView.
         #region
         private void DisplayListView()
         {
@@ -123,7 +121,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.10	-- Create a SAVE button, !!ADD!! Data sorting by Name !!ADD!!.
+        // 9.10	-- Create a 'Save' button, !!ADD!! Data sorting by Name !!ADD!!.
         #region
         string defaultFileName = "default.bin";
         private void buttonSave_Click(object sender, EventArgs e)
@@ -168,7 +166,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.11	-- Create a LOAD button that will read information into the array.
+        // 9.11	-- Create a 'Load' button that will read information into the array.
         #region
         private void buttonLoad_Click(object sender, EventArgs e)
         {
@@ -211,17 +209,13 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
+        // 9.6	-- Create a 'Bubble Sort' method.
+        #region
 
-        // In-progress.
+        #endregion
+        // 9.7	-- Create a 'Binary Search' method.
+        #region
 
-
-        // To-do.
-        // 9.6	-- Write the code for a Bubble Sort method to sort the 2D array by Name ascending,
-        //         ensure you use a separate swap method that passes the array element to be swapped
-        //         (do not use any built-in array methods).
-        // 9.7	-- Write the code for a Binary Search for the Name in the 2D array and display
-        //         the information in the other textboxes when found, add suitable feedback if the
-        //         search in not successful and clear the search textbox(do not use any built-in array methods).
-        // 9.12	-- Error trapping, appropriate Dialog Boxes, Message Boxes ect.
+        #endregion
     }
 }
