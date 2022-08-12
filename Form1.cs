@@ -21,7 +21,9 @@ namespace Data_Structures_Wiki
         {
             InitializeComponent();
         }
-        // 9.1 -- Create a global 2D string array.
+
+        // Mostly-done.
+        // 9.01 -- Create a global 2D string array.
         #region
         static int row = 12;
         static int column = 4;
@@ -42,7 +44,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.2 -- Create an ADD button to add info from the four TextBoxes into array.
+        // 9.02 -- Create an ADD button to add info from the four TextBoxes into array.
         #region
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -61,7 +63,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.3 -- Create an EDIT button to let the user modify the array with info from the four text boxes.
+        // 9.03 -- Create an EDIT button to let the user modify the array with info from the four text boxes.
         #region
         private void buttonEdit_Click(object sender, EventArgs e)
         {
@@ -74,7 +76,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.4 -- Create a DELETE button to removes all information from an item in the array.
+        // 9.04 -- Create a DELETE button to removes all information from an item in the array.
         #region
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -87,7 +89,7 @@ namespace Data_Structures_Wiki
             DisplayListView();
         }
         #endregion
-        // 9.5 -- Create a CLEAR method to clear the four TextBoxes.
+        // 9.05 -- Create a CLEAR method to clear the four TextBoxes.
         #region
         private void ClearTextBoxes()
         {
@@ -97,7 +99,7 @@ namespace Data_Structures_Wiki
             textBoxDescription.Clear();
         }
         #endregion
-        // 9.9 -- Create a TextBoxDisplay method to show info when an item is selected in the ListView.
+        // 9.09 -- Create a TextBoxDisplay method to show info when an item is selected in the ListView.
         #region
         private void listView_Click(object sender, EventArgs e)
         {
@@ -108,7 +110,7 @@ namespace Data_Structures_Wiki
             textBoxDescription.Text = stringArray[3, currentItem];
         }
         #endregion
-        // 9.8 -- Create a ListViewDisplay method to show 'Name' and 'Category' in a ListView.
+        // 9.08 -- Create a ListViewDisplay method to show 'Name' and 'Category' in a ListView.
         #region
         private void DisplayListView()
         {
@@ -220,5 +222,6 @@ namespace Data_Structures_Wiki
         // 9.7	-- Write the code for a Binary Search for the Name in the 2D array and display
         //         the information in the other textboxes when found, add suitable feedback if the
         //         search in not successful and clear the search textbox(do not use any built-in array methods).
+        // 9.12	-- Error trapping, appropriate Dialog Boxes, Message Boxes ect.
     }
 }
