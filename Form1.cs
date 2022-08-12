@@ -36,6 +36,8 @@ namespace Data_Structures_Wiki
             {
                 stringArray[0, i] = "~";
                 stringArray[1, i] = "";
+                stringArray[2, i] = "";
+                stringArray[3, i] = "";
             }
             DisplayListView();
         }
@@ -119,11 +121,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-
-        // In-progress.
-        // 9.10	-- Create a SAVE button, data is written to a binary file called definitions.dat.
-        //         Data is sorted by Name, user has the option to select an alternate file.
-        //         Use a file stream and BinaryWriter to create the file.
+        // 9.10	-- Create a SAVE button, !!ADD!! Data sorting by Name !!ADD!!.
         #region
         string defaultFileName = "default.bin";
         private void buttonSave_Click(object sender, EventArgs e)
@@ -168,9 +166,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.11	-- Create a LOAD button that will read the information from a binary file called
-        //         definitions.dat into the 2D array, ensure the user has the option to select an alternative file.
-        //         Use a file stream and BinaryReader to complete this task.
+        // 9.11	-- Create a LOAD button that will read information into the array.
         #region
         private void buttonLoad_Click(object sender, EventArgs e)
         {
@@ -181,6 +177,7 @@ namespace Data_Structures_Wiki
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 Open(openFileDialog.FileName);
+                DisplayListView();
             }
         }
         private void Open(string openFileName)
@@ -192,15 +189,15 @@ namespace Data_Structures_Wiki
                     using (var reader = new BinaryReader(stream, Encoding.UTF8, false))
                     {
                         {
-                            int x = 0;
+                            int y = 0;
                             Array.Clear(stringArray, 0, stringArray.Length);
                             while (stream.Position < stream.Length)
                             {
-                                for (int y = 0; y < column; y++)
+                                for (int x = 0; x < column; x++)
                                 {
                                     stringArray[x, y] = reader.ReadString();
                                 }
-                                x++;
+                                y++;
                             }
                         }
                     }
@@ -212,6 +209,9 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
+
+        // In-progress.
+
 
         // To-do.
         // 9.6	-- Write the code for a Bubble Sort method to sort the 2D array by Name ascending,
