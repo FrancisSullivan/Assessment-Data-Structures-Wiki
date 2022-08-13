@@ -121,7 +121,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.10	-- Create a 'Save' button, !!ADD!! Data sorting by Name !!ADD!!.
+        // 9.10	-- Create a 'Save' button.
         #region
         string defaultFileName = "default.bin";
         private void buttonSave_Click(object sender, EventArgs e)
@@ -146,6 +146,8 @@ namespace Data_Structures_Wiki
         {
             try
             {
+                BubbleSort();
+                DisplayListView();
                 using (Stream stream = File.Open(saveFileName, FileMode.Create))
                 {
                     using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
