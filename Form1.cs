@@ -209,7 +209,7 @@ namespace Data_Structures_Wiki
             }
         }
         #endregion
-        // 9.6	-- !!BROKEN!!Create a 'Bubble Sort' method.
+        // 9.6	-- Create a 'Bubble Sort' method.
         #region
         private void BubbleSort()
         {
@@ -217,49 +217,62 @@ namespace Data_Structures_Wiki
             {
                 for (int j = 0; j < (row - 1); j++)
                 {
-                    string a = stringArray[0, j];
-                    char[] ch1 = a.ToCharArray();
-                    string b = stringArray[0, j + 1];
-                    char[] ch2 = b.ToCharArray();
+                    string string00 = stringArray[0, j];
+                    string string01 = stringArray[0, j + 1];
 
-                    int k = ch1.Length;
-                    int l = ch2.Length;
-                    while ((k & l) != 0)
+                    char[] character00 = string00.ToCharArray();
+                    char[] character01 = string01.ToCharArray();
+
+                    int length00 = character00.Length;
+                    int length01 = character01.Length;
+
+                    int minimumLength = 1;
+
+                    if (length00 <= length01)
                     {
-                        for (int m = 0; m < k; m++)
+                        minimumLength = length00;
+                    }
+                    if (length00 >= length01)
+                    {
+                        minimumLength = length01;
+                    }
+
+                    for (int k = 0; k < minimumLength; k++)
+                    {
+                        Console.WriteLine("Loop.");
+                        if (character01[k] < character00[k])
                         {
-                            if (ch1[m] > ch2[m])
-                            {
-                                string tempColumn0 = stringArray[0, j];
-                                stringArray[0, j] = stringArray[0, j + 1];
-                                stringArray[0, j + 1] = tempColumn0;
+                            string temp00 = stringArray[0, j];
+                            stringArray[0, j] = stringArray[0, j + 1];
+                            stringArray[0, j + 1] = temp00;
 
-                                string tempColumn1 = stringArray[1, j];
-                                stringArray[1, j] = stringArray[1, j + 1];
-                                stringArray[1, j + 1] = tempColumn1;
+                            string temp01 = stringArray[1, j];
+                            stringArray[1, j] = stringArray[1, j + 1];
+                            stringArray[1, j + 1] = temp01;
 
-                                string tempColumn2 = stringArray[2, j];
-                                stringArray[2, j] = stringArray[2, j + 1];
-                                stringArray[2, j + 1] = tempColumn2;
+                            string temp02 = stringArray[2, j];
+                            stringArray[2, j] = stringArray[2, j + 1];
+                            stringArray[2, j + 1] = temp02;
 
-                                string tempColumn3 = stringArray[3, j];
-                                stringArray[3, j] = stringArray[3, j + 1];
-                                stringArray[3, j + 1] = tempColumn3;
-                            }
+                            string temp03 = stringArray[3, j];
+                            stringArray[3, j] = stringArray[3, j + 1];
+                            stringArray[3, j + 1] = temp03;
+
+                            break;
                         }
-                        k = k - 1;
-                        l = l - 1;
+                        if (character01[k] > character00[k])
+                        {
+                            break;
+                        }
                     }
                 }
             }
         }
-
         #endregion
         // 9.7	-- Create a 'Binary Search' method.
         #region
 
         #endregion
-
         private void button6_Click(object sender, EventArgs e)
         {
             BubbleSort();
