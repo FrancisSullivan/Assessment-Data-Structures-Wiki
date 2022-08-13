@@ -45,7 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -200,12 +200,12 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Description";
             // 
-            // textBox5
+            // textBoxSearch
             // 
-            this.textBox5.Location = new System.Drawing.Point(552, 651);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(243, 31);
-            this.textBox5.TabIndex = 15;
+            this.textBoxSearch.Location = new System.Drawing.Point(552, 651);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(243, 31);
+            this.textBoxSearch.TabIndex = 15;
             // 
             // statusStrip1
             // 
@@ -232,7 +232,7 @@
             this.ClientSize = new System.Drawing.Size(1019, 744);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.label3);
@@ -275,7 +275,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label5;
     }
