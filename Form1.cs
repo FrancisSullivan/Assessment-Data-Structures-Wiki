@@ -213,6 +213,11 @@ namespace Data_Structures_Wiki
         #endregion
         // 9.6	-- Create a 'Bubble Sort' method.
         #region
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            BubbleSort();
+            DisplayListView();
+        }
         private void BubbleSort()
         {
             for (int i = 0; i < (row - 1); i++)
@@ -273,12 +278,11 @@ namespace Data_Structures_Wiki
         #endregion
         // 9.7	-- Create a 'Binary Search' method.
         #region
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
-        private void button6_Click(object sender, EventArgs e)
-        {
-            BubbleSort();
-            DisplayListView();
-        }
     }
 }

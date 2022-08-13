@@ -43,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -112,6 +112,7 @@
             this.listView.TabIndex = 5;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ColumnClick);
             this.listView.Click += new System.EventHandler(this.listView_Click);
             // 
             // columnHeader1
@@ -180,15 +181,15 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Structure";
             // 
-            // button6
+            // buttonSearch
             // 
-            this.button6.Location = new System.Drawing.Point(807, 648);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(179, 43);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "Search";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.buttonSearch.Location = new System.Drawing.Point(807, 648);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(179, 43);
+            this.buttonSearch.TabIndex = 13;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // label4
             // 
@@ -233,7 +234,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -272,7 +273,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.StatusStrip statusStrip1;
