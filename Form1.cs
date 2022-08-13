@@ -280,40 +280,34 @@ namespace Data_Structures_Wiki
         #region
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-
+            BinarySearch();
         }
         void BinarySearch()
         {
-            int column = 1;
-            int row = 4;
-            string[,] array = new string[column, row];
-
-            array[0, 0] = "a";
-            array[0, 1] = "b";
-            array[0, 2] = "c";
-            array[0, 3] = "d";
-
             int lowerBound = 0;
             int upperBound = row - 1;
-            string target = "d";
-
+            string target = textBoxSearch.Text;
+            int index = 0;
             while (true)
             {
                 int midPoint = (lowerBound + upperBound) / 2;
-                if (array[0, midPoint] == target)
+                if (stringArray[0, midPoint] == target)
                 {
-                    Console.WriteLine("Found.");
+                    MessageBox.Show("Found.");
                     break;
                 }
-                if (array[0, midPoint].ToCharArray()[0] < target.ToCharArray()[0])
+                if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
                 {
                     lowerBound = midPoint + 1;
                 }
-                else if (array[0, midPoint].ToCharArray()[0] > target.ToCharArray()[0])
+                if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
                 {
                     upperBound = midPoint - 1;
                 }
-
+                if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
+                {
+                    index++;
+                }
             }
         }
         #endregion
