@@ -78,13 +78,23 @@ namespace Data_Structures_Wiki
         #region
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            int currentItem = listView.SelectedIndices[0];
-            stringArray[0, currentItem] = "~";
-            stringArray[1, currentItem] = "";
-            stringArray[2, currentItem] = "";
-            stringArray[3, currentItem] = "";
-            ClearTextBoxes();
-            DisplayListView();
+            var result = MessageBox.Show("Are you sure you want to delete this record?", "Add New Record",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int currentItem = listView.SelectedIndices[0];
+                stringArray[0, currentItem] = "~";
+                stringArray[1, currentItem] = "";
+                stringArray[2, currentItem] = "";
+                stringArray[3, currentItem] = "";
+                ClearTextBoxes();
+                DisplayListView();
+            }
+            else
+            {
+                toolStripStatusLabel.Text = "'Delete' operation canceled.";
+            }
+            
         }
         #endregion
         // 9.05 -- Create a 'Clear' method to clear the four TextBoxes.
