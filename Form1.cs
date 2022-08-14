@@ -48,18 +48,24 @@ namespace Data_Structures_Wiki
         {
             for (int i = 0; i < row; i++)
             {
+                if (stringArray[0, i] == textBoxName.Text)
+                {
+                    toolStripStatusLabel.Text = "Already in array.";
+                    break;
+                }
                 if (stringArray[0, i] == "~")
                 {
                     stringArray[0, i] = textBoxName.Text;
                     stringArray[1, i] = textBoxCategory.Text;
                     stringArray[2, i] = textBoxStructure.Text;
                     stringArray[3, i] = textBoxDescription.Text;
+                    toolStripStatusLabel.Text = "Record added.";
                     break;
                 }
             }
             ClearTextBoxes();
             DisplayListView();
-            toolStripStatusLabel.Text = "Record added.";
+            textBoxName.Focus();
         }
         private void textBoxName_MouseHover(object sender, EventArgs e)
         {
