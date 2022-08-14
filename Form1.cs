@@ -14,9 +14,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 // Francis Sullivan.
 namespace Data_Structures_Wiki
 {
-    public partial class Form1 : Form
+    public partial class FormDataStructuresWiki : Form
     {
-        public Form1()
+        public FormDataStructuresWiki()
         {
             InitializeComponent();
         }
@@ -26,7 +26,7 @@ namespace Data_Structures_Wiki
         static int row = 12;
         static int column = 4;
         string[,] stringArray = new string[column, row];
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormDataStructuresWiki_Load(object sender, EventArgs e)
         {
             InitaliseArray();
         }
@@ -322,6 +322,10 @@ namespace Data_Structures_Wiki
         }
         void BinarySearch()
         {
+            if (textBoxSearch.Text == "")
+            {
+                return;
+            }
             int lowerBound = 0;
             int upperBound = row - 1;
             string target = textBoxSearch.Text;
