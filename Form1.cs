@@ -330,8 +330,16 @@ namespace Data_Structures_Wiki
             int upperBound = row - 1;
             string target = textBoxSearch.Text;
             int index = 0;
-            while (true)
+            bool flag = false;
+            while (flag != true)
             {
+                if (lowerBound >= upperBound)
+                {
+                    textBoxSearch.Clear();
+                    textBoxSearch.Focus();
+                    toolStripStatusLabel.Text = "Item not in list.";
+                    flag = true;
+                }
                 int midPoint = (lowerBound + upperBound) / 2;
                 if (stringArray[0, midPoint] == target)
                 {
@@ -342,20 +350,14 @@ namespace Data_Structures_Wiki
                     textBoxSearch.Clear();
                     textBoxSearch.Focus();
                     toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
-                    break;
+                    flag = true;
                 }
                 if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
-                {
                     lowerBound = midPoint + 1;
-                }
                 if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
-                {
                     upperBound = midPoint - 1;
-                }
                 if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
-                {
                     index++;
-                }
             }
         }
         #endregion
