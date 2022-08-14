@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.label5 = new System.Windows.Forms.Label();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTipTextBoxName = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,6 +135,8 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(455, 31);
             this.textBoxName.TabIndex = 6;
+            this.textBoxName.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBoxName_MouseDoubleClick);
+            this.textBoxName.MouseHover += new System.EventHandler(this.textBoxName_MouseHover);
             // 
             // textBoxCategory
             // 
@@ -214,9 +218,9 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 706);
+            this.statusStrip.Location = new System.Drawing.Point(0, 722);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1019, 38);
+            this.statusStrip.Size = new System.Drawing.Size(1019, 22);
             this.statusStrip.TabIndex = 16;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -232,7 +236,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 28);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 12);
             // 
             // Form1
             // 
@@ -290,6 +294,7 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolTip toolTipTextBoxName;
     }
 }
 

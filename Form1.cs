@@ -61,6 +61,10 @@ namespace Data_Structures_Wiki
             DisplayListView();
             toolStripStatusLabel.Text = "Record added.";
         }
+        private void textBoxName_MouseHover(object sender, EventArgs e)
+        {
+            toolTipTextBoxName.SetToolTip(textBoxName, "Double click to clear all attributes");
+        }
         #endregion
         // 9.03 -- Create an 'Edit' button to let the user modify the array with info from the four text boxes.
         #region
@@ -116,6 +120,12 @@ namespace Data_Structures_Wiki
             textBoxCategory.Clear();
             textBoxStructure.Clear();
             textBoxDescription.Clear();
+        }
+        private void textBoxName_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            ClearTextBoxes();
+            toolStripStatusLabel.Text = "All attributes cleared.";
+            textBoxName.Focus();
         }
         #endregion
         // 9.09 -- Create a 'TextBoxDisplay' method to show info when an item is selected in the ListView.
