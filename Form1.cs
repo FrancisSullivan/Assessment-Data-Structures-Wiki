@@ -130,6 +130,7 @@ namespace Data_Structures_Wiki
             textBoxCategory.Text = stringArray[1, currentItem];
             textBoxStructure.Text = stringArray[2, currentItem];
             textBoxDescription.Text = stringArray[3, currentItem];
+            toolStripStatusLabel.Text = "Record selected. Attributes displayed above.";
         }
         #endregion
         // 9.08 -- Create a 'ListViewDisplay' method to show 'Name' and 'Category' in a ListView.
@@ -206,7 +207,10 @@ namespace Data_Structures_Wiki
             {
                 Open(openFileDialog.FileName);
                 DisplayListView();
+                toolStripStatusLabel.Text = "Array imported from file.";
             }
+            else
+                toolStripStatusLabel.Text = "Load operation canceled.";
         }
         private void Open(string openFileName)
         {
@@ -326,7 +330,7 @@ namespace Data_Structures_Wiki
                     textBoxDescription.Text = stringArray[3, midPoint];
                     textBoxSearch.Clear();
                     textBoxSearch.Focus();
-                    toolStripStatusLabel.Text = "Record found. Results displayed above.";
+                    toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
                     break;
                 }
                 if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
