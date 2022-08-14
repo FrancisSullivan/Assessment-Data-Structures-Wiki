@@ -1,6 +1,6 @@
 ﻿namespace Data_Structures_Wiki
 {
-    partial class Form1
+    partial class FormDataStructuresWiki
     {
         /// <summary>
         /// Required designer variable.
@@ -48,8 +48,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.label5 = new System.Windows.Forms.Label();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label5 = new System.Windows.Forms.Label();
             this.toolTipTextBoxName = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -224,6 +224,11 @@
             this.statusStrip.TabIndex = 16;
             this.statusStrip.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 12);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -233,12 +238,7 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Compendium";
             // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(0, 12);
-            // 
-            // Form1
+            // FormDataStructuresWiki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -261,9 +261,9 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
-            this.Name = "Form1";
+            this.Name = "FormDataStructuresWiki";
             this.Text = "Data Structures Wiki";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormDataStructuresWiki_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
