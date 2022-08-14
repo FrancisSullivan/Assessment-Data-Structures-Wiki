@@ -298,7 +298,7 @@ namespace Data_Structures_Wiki
                     textBoxStructure.Text = stringArray[2, midPoint];
                     textBoxDescription.Text = stringArray[3, midPoint];
                     textBoxSearch.Clear();
-                    MessageBox.Show("Found.");
+                    textBoxSearch.Focus();
                     break;
                 }
                 if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
