@@ -83,8 +83,6 @@ namespace Data_Structures_Wiki
             {
                 toolStripStatusLabel.Text = "'Edit' operation canceled.";
             }
-
-            
         }
         #endregion
         // 9.04 -- Create a 'Delete' button to removes all information from an item in the array.
@@ -108,7 +106,6 @@ namespace Data_Structures_Wiki
             {
                 toolStripStatusLabel.Text = "'Delete' operation canceled.";
             }
-            
         }
         #endregion
         // 9.05 -- Create a 'Clear' method to clear the four TextBoxes.
