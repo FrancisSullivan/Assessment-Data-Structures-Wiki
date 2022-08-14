@@ -59,32 +59,56 @@ namespace Data_Structures_Wiki
             }
             ClearTextBoxes();
             DisplayListView();
+            toolStripStatusLabel.Text = "Record added.";
         }
         #endregion
         // 9.03 -- Create an 'Edit' button to let the user modify the array with info from the four text boxes.
         #region
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            int currentItem = listView.SelectedIndices[0];
-            stringArray[0, currentItem] = textBoxName.Text;
-            stringArray[1, currentItem] = textBoxCategory.Text;
-            stringArray[2, currentItem] = textBoxStructure.Text;
-            stringArray[3, currentItem] = textBoxDescription.Text;
-            ClearTextBoxes();
-            DisplayListView();
+            var result = MessageBox.Show("Are you sure you want to change this record?", "Edit Record",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int currentItem = listView.SelectedIndices[0];
+                stringArray[0, currentItem] = textBoxName.Text;
+                stringArray[1, currentItem] = textBoxCategory.Text;
+                stringArray[2, currentItem] = textBoxStructure.Text;
+                stringArray[3, currentItem] = textBoxDescription.Text;
+                ClearTextBoxes();
+                DisplayListView();
+                toolStripStatusLabel.Text = "Record updated.";
+            }
+            else
+            {
+                toolStripStatusLabel.Text = "'Edit' operation canceled.";
+            }
+
+            
         }
         #endregion
         // 9.04 -- Create a 'Delete' button to removes all information from an item in the array.
         #region
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            int currentItem = listView.SelectedIndices[0];
-            stringArray[0, currentItem] = "~";
-            stringArray[1, currentItem] = "";
-            stringArray[2, currentItem] = "";
-            stringArray[3, currentItem] = "";
-            ClearTextBoxes();
-            DisplayListView();
+            var result = MessageBox.Show("Are you sure you want to delete this record?", "Delete Record",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int currentItem = listView.SelectedIndices[0];
+                stringArray[0, currentItem] = "~";
+                stringArray[1, currentItem] = "";
+                stringArray[2, currentItem] = "";
+                stringArray[3, currentItem] = "";
+                ClearTextBoxes();
+                DisplayListView();
+                toolStripStatusLabel.Text = "Record deleted.";
+            }
+            else
+            {
+                toolStripStatusLabel.Text = "'Delete' operation canceled.";
+            }
+            
         }
         #endregion
         // 9.05 -- Create a 'Clear' method to clear the four TextBoxes.
@@ -136,10 +160,12 @@ namespace Data_Structures_Wiki
             if (saveFileDialog.FileName != "")
             {
                 Save(fileName);
+                toolStripStatusLabel.Text = "Array saved to: " + fileName;
             }
             else
             {
                 Save(defaultFileName);
+                toolStripStatusLabel.Text = "Array saved to: " + Application.StartupPath + "\\" + defaultFileName;
             }
         }
         private void Save(string saveFileName)
@@ -274,6 +300,7 @@ namespace Data_Structures_Wiki
                     }
                 }
             }
+            toolStripStatusLabel.Text = "Array sorted by 'Name' ascending.";
         }
         #endregion
         // 9.7	-- Create a 'Binary Search' method.
@@ -299,6 +326,7 @@ namespace Data_Structures_Wiki
                     textBoxDescription.Text = stringArray[3, midPoint];
                     textBoxSearch.Clear();
                     textBoxSearch.Focus();
+                    toolStripStatusLabel.Text = "Record found. Results displayed above.";
                     break;
                 }
                 if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
