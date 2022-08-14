@@ -293,6 +293,11 @@ namespace Data_Structures_Wiki
                 int midPoint = (lowerBound + upperBound) / 2;
                 if (stringArray[0, midPoint] == target)
                 {
+                    textBoxName.Text = stringArray[0, midPoint];
+                    textBoxCategory.Text = stringArray[1, midPoint];
+                    textBoxStructure.Text = stringArray[2, midPoint];
+                    textBoxDescription.Text = stringArray[3, midPoint];
+                    textBoxSearch.Clear();
                     MessageBox.Show("Found.");
                     break;
                 }
