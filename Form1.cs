@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace Data_Structures_Wiki
         {
             for (int i = 0; i < row; i++)
             {
-                stringArray[0, i] = "~";
+                stringArray[0, i] = "";
                 stringArray[1, i] = "";
                 stringArray[2, i] = "";
                 stringArray[3, i] = "";
@@ -53,7 +54,7 @@ namespace Data_Structures_Wiki
                     toolStripStatusLabel.Text = "Already in array.";
                     break;
                 }
-                if (stringArray[0, i] == "~")
+                if (stringArray[0, i] == "")
                 {
                     stringArray[0, i] = textBoxName.Text;
                     stringArray[1, i] = textBoxCategory.Text;
@@ -105,7 +106,7 @@ namespace Data_Structures_Wiki
             if (result == DialogResult.Yes)
             {
                 int currentItem = listView.SelectedIndices[0];
-                stringArray[0, currentItem] = "~";
+                stringArray[0, currentItem] = "";
                 stringArray[1, currentItem] = "";
                 stringArray[2, currentItem] = "";
                 stringArray[3, currentItem] = "";
@@ -290,7 +291,7 @@ namespace Data_Structures_Wiki
 
                     for (int k = 0; k < minimumLength; k++)
                     {
-                        Console.WriteLine("Loop.");
+                        //Console.WriteLine("Loop.");
                         if (character01[k] < character00[k])
                         {
                             string temp00 = stringArray[0, j];
@@ -328,43 +329,55 @@ namespace Data_Structures_Wiki
             BinarySearch();
         }
         void BinarySearch()
-        {
-            if (textBoxSearch.Text == "")
+         {
+            try
             {
-                return;
+                if (textBoxSearch.Text == "")
+                {
+                    return;
+                }
+                int lowerBound = 0;
+                int upperBound = row - 1;
+                string target = textBoxSearch.Text;
+                int index = 0;
+                bool flag = false;
+                while (flag != true)
+                {
+                    if (lowerBound >= upperBound)
+                    {
+                        textBoxSearch.Clear();
+                        textBoxSearch.Focus();
+                        toolStripStatusLabel.Text = "Record not found.";
+                        flag = true;
+                    }
+                    int midPoint = (lowerBound + upperBound) / 2;
+                    if (stringArray[0, midPoint] == target)
+                    {
+                        textBoxName.Text = stringArray[0, midPoint];
+                        textBoxCategory.Text = stringArray[1, midPoint];
+                        textBoxStructure.Text = stringArray[2, midPoint];
+                        textBoxDescription.Text = stringArray[3, midPoint];
+                        textBoxSearch.Clear();
+                        textBoxSearch.Focus();
+                        toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
+                        flag = true;
+                    }
+                    if (stringArray[0, midPoint].ToCharArray().Length == 0)
+                        upperBound = midPoint - 1;
+                    else
+                    {
+                        if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
+                            lowerBound = midPoint + 1;
+                        if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
+                            upperBound = midPoint - 1;
+                        if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
+                            index++;
+                    }
+                }
             }
-            int lowerBound = 0;
-            int upperBound = row - 1;
-            string target = textBoxSearch.Text;
-            int index = 0;
-            bool flag = false;
-            while (flag != true)
+            catch(IndexOutOfRangeException ex)
             {
-                if (lowerBound >= upperBound)
-                {
-                    textBoxSearch.Clear();
-                    textBoxSearch.Focus();
-                    toolStripStatusLabel.Text = "Record not found.";
-                    flag = true;
-                }
-                int midPoint = (lowerBound + upperBound) / 2;
-                if (stringArray[0, midPoint] == target)
-                {
-                    textBoxName.Text = stringArray[0, midPoint];
-                    textBoxCategory.Text = stringArray[1, midPoint];
-                    textBoxStructure.Text = stringArray[2, midPoint];
-                    textBoxDescription.Text = stringArray[3, midPoint];
-                    textBoxSearch.Clear();
-                    textBoxSearch.Focus();
-                    toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
-                    flag = true;
-                }
-                if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
-                    lowerBound = midPoint + 1;
-                if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
-                    upperBound = midPoint - 1;
-                if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
-                    index++;
+                toolStripStatusLabel.Text = "IndexOutOfRange." + stringArray[0, 5].ToCharArray().Length;
             }
         }
         #endregion
