@@ -62,6 +62,7 @@ namespace Data_Structures_Wiki
                     toolStripStatusLabel.Text = "Record added.";
                     break;
                 }
+                toolStripStatusLabel.Text = "Array full. You can not add any more records.";
             }
             ClearTextBoxes();
             DisplayListView();
