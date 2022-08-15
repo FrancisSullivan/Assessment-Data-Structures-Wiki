@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace Data_Structures_Wiki
         {
             for (int i = 0; i < row; i++)
             {
-                stringArray[0, i] = "~";
+                stringArray[0, i] = "";
                 stringArray[1, i] = "";
                 stringArray[2, i] = "";
                 stringArray[3, i] = "";
@@ -53,7 +54,7 @@ namespace Data_Structures_Wiki
                     toolStripStatusLabel.Text = "Already in array.";
                     break;
                 }
-                if (stringArray[0, i] == "~")
+                if (stringArray[0, i] == "")
                 {
                     stringArray[0, i] = textBoxName.Text;
                     stringArray[1, i] = textBoxCategory.Text;
@@ -100,12 +101,17 @@ namespace Data_Structures_Wiki
         #region
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if (listView.SelectedIndices.Count == 0)
+            {
+                toolStripStatusLabel.Text = "No record has been selected. To 'delete' first select a record from the 'Name' column.";
+                return;
+            }
             var result = MessageBox.Show("Are you sure you want to delete this record?", "Delete Record",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 int currentItem = listView.SelectedIndices[0];
-                stringArray[0, currentItem] = "~";
+                stringArray[0, currentItem] = "";
                 stringArray[1, currentItem] = "";
                 stringArray[2, currentItem] = "";
                 stringArray[3, currentItem] = "";
@@ -290,7 +296,7 @@ namespace Data_Structures_Wiki
 
                     for (int k = 0; k < minimumLength; k++)
                     {
-                        Console.WriteLine("Loop.");
+                        //Console.WriteLine("Loop.");
                         if (character01[k] < character00[k])
                         {
                             string temp00 = stringArray[0, j];
@@ -325,10 +331,12 @@ namespace Data_Structures_Wiki
         #region
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            BubbleSort();
+            DisplayListView();
             BinarySearch();
         }
         void BinarySearch()
-        {
+         {
             if (textBoxSearch.Text == "")
             {
                 return;
@@ -359,12 +367,17 @@ namespace Data_Structures_Wiki
                     toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
                     flag = true;
                 }
-                if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
-                    lowerBound = midPoint + 1;
-                if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
+                if (stringArray[0, midPoint].ToCharArray().Length == 0)
                     upperBound = midPoint - 1;
-                if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
-                    index++;
+                else
+                {
+                    if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
+                        lowerBound = midPoint + 1;
+                    if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
+                        upperBound = midPoint - 1;
+                    if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
+                        index++;
+                }
             }
         }
         #endregion
