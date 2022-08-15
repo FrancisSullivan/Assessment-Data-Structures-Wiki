@@ -146,16 +146,124 @@ namespace Data_Structures_Wiki
             textBoxName.Focus();
         }
         #endregion
-        // 9.09 -- Create a 'TextBoxDisplay' method to show info when an item is selected in the ListView.
+        // 9.6	-- Create a 'Bubble Sort' method.
         #region
-        private void listView_Click(object sender, EventArgs e)
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            int currentItem = listView.SelectedIndices[0];
-            textBoxName.Text = stringArray[0, currentItem];
-            textBoxCategory.Text = stringArray[1, currentItem];
-            textBoxStructure.Text = stringArray[2, currentItem];
-            textBoxDescription.Text = stringArray[3, currentItem];
-            toolStripStatusLabel.Text = "Record selected. Attributes displayed above.";
+            BubbleSort();
+            DisplayListView();
+        }
+        private void BubbleSort()
+        {
+            for (int i = 0; i < (row - 1); i++)
+            {
+                for (int j = 0; j < (row - 1); j++)
+                {
+                    string string00 = stringArray[0, j];
+                    string string01 = stringArray[0, j + 1];
+
+                    char[] character00 = string00.ToCharArray();
+                    char[] character01 = string01.ToCharArray();
+
+                    int length00 = character00.Length;
+                    int length01 = character01.Length;
+
+                    int minimumLength = 1;
+
+                    if (length00 <= length01)
+                    {
+                        minimumLength = length00;
+                    }
+                    if (length00 >= length01)
+                    {
+                        minimumLength = length01;
+                    }
+
+                    for (int k = 0; k < minimumLength; k++)
+                    {
+                        //Console.WriteLine("Loop.");
+                        if (character01[k] < character00[k])
+                        {
+                            string temp00 = stringArray[0, j];
+                            stringArray[0, j] = stringArray[0, j + 1];
+                            stringArray[0, j + 1] = temp00;
+
+                            string temp01 = stringArray[1, j];
+                            stringArray[1, j] = stringArray[1, j + 1];
+                            stringArray[1, j + 1] = temp01;
+
+                            string temp02 = stringArray[2, j];
+                            stringArray[2, j] = stringArray[2, j + 1];
+                            stringArray[2, j + 1] = temp02;
+
+                            string temp03 = stringArray[3, j];
+                            stringArray[3, j] = stringArray[3, j + 1];
+                            stringArray[3, j + 1] = temp03;
+
+                            break;
+                        }
+                        if (character01[k] > character00[k])
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            toolStripStatusLabel.Text = "Array sorted by 'Name' ascending.";
+        }
+        #endregion
+        // 9.7	-- Create a 'Binary Search' method.
+        #region
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            BubbleSort();
+            DisplayListView();
+            BinarySearch();
+        }
+        void BinarySearch()
+        {
+            if (textBoxSearch.Text == "")
+            {
+                return;
+            }
+            int lowerBound = 0;
+            int upperBound = row - 1;
+            string target = textBoxSearch.Text;
+            int index = 0;
+            bool flag = false;
+            while (flag != true)
+            {
+                if (lowerBound >= upperBound)
+                {
+                    textBoxSearch.Clear();
+                    textBoxSearch.Focus();
+                    toolStripStatusLabel.Text = "Record not found.";
+                    flag = true;
+                }
+                int midPoint = (lowerBound + upperBound) / 2;
+                if (stringArray[0, midPoint] == target)
+                {
+                    textBoxName.Text = stringArray[0, midPoint];
+                    textBoxCategory.Text = stringArray[1, midPoint];
+                    textBoxStructure.Text = stringArray[2, midPoint];
+                    textBoxDescription.Text = stringArray[3, midPoint];
+                    textBoxSearch.Clear();
+                    textBoxSearch.Focus();
+                    toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
+                    flag = true;
+                }
+                if (stringArray[0, midPoint].ToCharArray().Length == 0)
+                    upperBound = midPoint - 1;
+                else
+                {
+                    if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
+                        lowerBound = midPoint + 1;
+                    if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
+                        upperBound = midPoint - 1;
+                    if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
+                        index++;
+                }
+            }
         }
         #endregion
         // 9.08 -- Create a 'ListViewDisplay' method to show 'Name' and 'Category' in a ListView.
@@ -169,6 +277,18 @@ namespace Data_Structures_Wiki
                 listViewItem.SubItems.Add(stringArray[1, i]);
                 listView.Items.Add(listViewItem);
             }
+        }
+        #endregion
+        // 9.09 -- Create a 'TextBoxDisplay' method to show info when an item is selected in the ListView.
+        #region
+        private void listView_Click(object sender, EventArgs e)
+        {
+            int currentItem = listView.SelectedIndices[0];
+            textBoxName.Text = stringArray[0, currentItem];
+            textBoxCategory.Text = stringArray[1, currentItem];
+            textBoxStructure.Text = stringArray[2, currentItem];
+            textBoxDescription.Text = stringArray[3, currentItem];
+            toolStripStatusLabel.Text = "Record selected. Attributes displayed above.";
         }
         #endregion
         // 9.10	-- Create a 'Save' button.
@@ -263,126 +383,6 @@ namespace Data_Structures_Wiki
             catch (IOException ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-        }
-        #endregion
-        // 9.6	-- Create a 'Bubble Sort' method.
-        #region
-        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            BubbleSort();
-            DisplayListView();
-        }
-        private void BubbleSort()
-        {
-            for (int i = 0; i < (row - 1); i++)
-            {
-                for (int j = 0; j < (row - 1); j++)
-                {
-                    string string00 = stringArray[0, j];
-                    string string01 = stringArray[0, j + 1];
-
-                    char[] character00 = string00.ToCharArray();
-                    char[] character01 = string01.ToCharArray();
-
-                    int length00 = character00.Length;
-                    int length01 = character01.Length;
-
-                    int minimumLength = 1;
-
-                    if (length00 <= length01)
-                    {
-                        minimumLength = length00;
-                    }
-                    if (length00 >= length01)
-                    {
-                        minimumLength = length01;
-                    }
-
-                    for (int k = 0; k < minimumLength; k++)
-                    {
-                        //Console.WriteLine("Loop.");
-                        if (character01[k] < character00[k])
-                        {
-                            string temp00 = stringArray[0, j];
-                            stringArray[0, j] = stringArray[0, j + 1];
-                            stringArray[0, j + 1] = temp00;
-
-                            string temp01 = stringArray[1, j];
-                            stringArray[1, j] = stringArray[1, j + 1];
-                            stringArray[1, j + 1] = temp01;
-
-                            string temp02 = stringArray[2, j];
-                            stringArray[2, j] = stringArray[2, j + 1];
-                            stringArray[2, j + 1] = temp02;
-
-                            string temp03 = stringArray[3, j];
-                            stringArray[3, j] = stringArray[3, j + 1];
-                            stringArray[3, j + 1] = temp03;
-
-                            break;
-                        }
-                        if (character01[k] > character00[k])
-                        {
-                            break;
-                        }
-                    }
-                }
-            }
-            toolStripStatusLabel.Text = "Array sorted by 'Name' ascending.";
-        }
-        #endregion
-        // 9.7	-- Create a 'Binary Search' method.
-        #region
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            BubbleSort();
-            DisplayListView();
-            BinarySearch();
-        }
-        void BinarySearch()
-         {
-            if (textBoxSearch.Text == "")
-            {
-                return;
-            }
-            int lowerBound = 0;
-            int upperBound = row - 1;
-            string target = textBoxSearch.Text;
-            int index = 0;
-            bool flag = false;
-            while (flag != true)
-            {
-                if (lowerBound >= upperBound)
-                {
-                    textBoxSearch.Clear();
-                    textBoxSearch.Focus();
-                    toolStripStatusLabel.Text = "Record not found.";
-                    flag = true;
-                }
-                int midPoint = (lowerBound + upperBound) / 2;
-                if (stringArray[0, midPoint] == target)
-                {
-                    textBoxName.Text = stringArray[0, midPoint];
-                    textBoxCategory.Text = stringArray[1, midPoint];
-                    textBoxStructure.Text = stringArray[2, midPoint];
-                    textBoxDescription.Text = stringArray[3, midPoint];
-                    textBoxSearch.Clear();
-                    textBoxSearch.Focus();
-                    toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
-                    flag = true;
-                }
-                if (stringArray[0, midPoint].ToCharArray().Length == 0)
-                    upperBound = midPoint - 1;
-                else
-                {
-                    if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
-                        lowerBound = midPoint + 1;
-                    if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
-                        upperBound = midPoint - 1;
-                    if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
-                        index++;
-                }
             }
         }
         #endregion
