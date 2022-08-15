@@ -78,6 +78,11 @@ namespace Data_Structures_Wiki
         #region
         private void buttonEdit_Click(object sender, EventArgs e)
         {
+            if (listView.SelectedIndices.Count == 0)
+            {
+                toolStripStatusLabel.Text = "No record has been selected. To 'edit' first select a record from the 'Name' column.";
+                return;
+            }
             var result = MessageBox.Show("Are you sure you want to change this record?", "Edit Record",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
