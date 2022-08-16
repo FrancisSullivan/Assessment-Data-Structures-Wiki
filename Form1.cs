@@ -241,7 +241,7 @@ namespace Data_Structures_Wiki
                     flag = true;
                 }
                 int midPoint = (lowerBound + upperBound) / 2;
-                if (stringArray[0, midPoint] == target)
+                if (stringArray[0, midPoint].ToLower() == target.ToLower())
                 {
                     textBoxName.Text = stringArray[0, midPoint];
                     textBoxCategory.Text = stringArray[1, midPoint];
@@ -249,18 +249,22 @@ namespace Data_Structures_Wiki
                     textBoxDescription.Text = stringArray[3, midPoint];
                     textBoxSearch.Clear();
                     textBoxSearch.Focus();
-                    toolStripStatusLabel.Text = "Record found. Attributes displayed above.";
+                    toolStripStatusLabel.Text = "Record found. " +
+                        "Attributes displayed above.";
                     flag = true;
                 }
                 if (stringArray[0, midPoint].ToCharArray().Length == 0)
                     upperBound = midPoint - 1;
                 else
                 {
-                    if (stringArray[0, midPoint].ToCharArray()[index] < target.ToCharArray()[index])
+                    if (stringArray[0, midPoint].ToCharArray()[index] 
+                        < target.ToCharArray()[index])
                         lowerBound = midPoint + 1;
-                    if (stringArray[0, midPoint].ToCharArray()[index] > target.ToCharArray()[index])
+                    if (stringArray[0, midPoint].ToCharArray()[index] 
+                        > target.ToCharArray()[index])
                         upperBound = midPoint - 1;
-                    if (stringArray[0, midPoint].ToCharArray()[index] == target.ToCharArray()[index])
+                    if (stringArray[0, midPoint].ToCharArray()[index] 
+                        == target.ToCharArray()[index])
                         index++;
                 }
             }
