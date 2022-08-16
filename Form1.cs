@@ -146,7 +146,7 @@ namespace Data_Structures_Wiki
             textBoxName.Focus();
         }
         #endregion
-        // 9.6	-- Create a 'Bubble Sort' method.
+        // 9.06	-- Create a 'Bubble Sort' method.
         #region
         private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -212,7 +212,7 @@ namespace Data_Structures_Wiki
             toolStripStatusLabel.Text = "Array sorted by 'Name' ascending.";
         }
         #endregion
-        // 9.7	-- Create a 'Binary Search' method.
+        // 9.07	-- Create a 'Binary Search' method.
         #region
         private void buttonSearch_Click(object sender, EventArgs e)
         {
