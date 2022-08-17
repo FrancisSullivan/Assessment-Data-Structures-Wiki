@@ -47,8 +47,14 @@ namespace Data_Structures_Wiki
         #region
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            
             for (int i = 0; i < row; i++)
             {
+                if (textBoxName.Text == "")
+                {
+                    toolStripStatusLabel.Text = "Please enter a 'Name' into the 'Name textbox' to add a record.";
+                    break;
+                }
                 if (stringArray[0, i] == textBoxName.Text)
                 {
                     toolStripStatusLabel.Text = "Already in array.";
@@ -181,25 +187,9 @@ namespace Data_Structures_Wiki
 
                     for (int k = 0; k < minimumLength; k++)
                     {
-                        //Console.WriteLine("Loop.");
                         if (character01[k] < character00[k])
                         {
-                            string temp00 = stringArray[0, j];
-                            stringArray[0, j] = stringArray[0, j + 1];
-                            stringArray[0, j + 1] = temp00;
-
-                            string temp01 = stringArray[1, j];
-                            stringArray[1, j] = stringArray[1, j + 1];
-                            stringArray[1, j + 1] = temp01;
-
-                            string temp02 = stringArray[2, j];
-                            stringArray[2, j] = stringArray[2, j + 1];
-                            stringArray[2, j + 1] = temp02;
-
-                            string temp03 = stringArray[3, j];
-                            stringArray[3, j] = stringArray[3, j + 1];
-                            stringArray[3, j + 1] = temp03;
-
+                            Swap(j);
                             break;
                         }
                         if (character01[k] > character00[k])
@@ -210,6 +200,15 @@ namespace Data_Structures_Wiki
                 }
             }
             toolStripStatusLabel.Text = "Array sorted by 'Name' ascending.";
+        }
+        private void Swap(int j)
+        {
+            for (int l = 0; l < column; l++)
+            {
+                string temp = stringArray[l, j];
+                stringArray[l, j] = stringArray[l, j + 1];
+                stringArray[l, j + 1] = temp;
+            }
         }
         #endregion
         // 9.07	-- Create a 'Binary Search' method.
@@ -224,7 +223,9 @@ namespace Data_Structures_Wiki
         {
             if (textBoxSearch.Text == "")
             {
+                toolStripStatusLabel.Text = "Please enter a 'Name' into the search box to search.";
                 return;
+
             }
             int lowerBound = 0;
             int upperBound = row - 1;
